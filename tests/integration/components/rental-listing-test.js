@@ -12,6 +12,18 @@ Ember's rendering engine. When running in an integration test, the component goe
 its regular render lifecycle, and has access to dependent objects, loaded through Ember's resolver. */
 
 
+
+/* Stubbing Services in Application Tests
+Finally, we want to update our application tests to account for our new service. 
+While it would be great to verify that a map is displaying, we don't want to hammer the Maps service 
+every time we run our application test. For this tutorial we'll rely on our component integration tests 
+to ensure that the map DOM is being attached to our screen. To avoid hitting our Maps request limit, 
+we'll stub out our Maps service in our application tests.
+
+Often, services connect to third party APIs that are not desirable to include in automated tests. 
+To stub these services we simply have to register a stub service that implements the same API, but does not have 
+the dependencies that are problematic for the test suite. */
+
 let StubMapsService = Service.extend({
   getMapElement() {
     return Promise.resolve(document.createElement('div'));
