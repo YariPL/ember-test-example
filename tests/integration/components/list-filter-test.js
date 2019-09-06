@@ -28,6 +28,7 @@ module('Integration | Component | list-filter', function(hooks) {
       </ListFilter>
     `);
 
+    // wait before settled
     await settled();
 
     assert.equal(this.element.querySelectorAll('.city').length, 3);

@@ -12,7 +12,6 @@ Ember's rendering engine. When running in an integration test, the component goe
 its regular render lifecycle, and has access to dependent objects, loaded through Ember's resolver. */
 
 
-
 let StubMapsService = Service.extend({
   getMapElement() {
     return Promise.resolve(document.createElement('div'));
