@@ -1,0 +1,11 @@
+import Component from '@ember/component';
+
+export default Component.extend({
+    isWide: false,
+    // change image size
+    actions: {
+        toggleImageSize() {
+            this.toggleProperty('isWide');
+        }
+    }
+});
