@@ -31,8 +31,8 @@ module('Integration | Component | list-filter', function(hooks) {
     // wait before settled
     await settled();
 
-    assert.equal(this.element.querySelectorAll('.city').length, 3);
-    assert.dom(this.element.querySelector('.city')).hasText('San Francisco');
+    assert.equal(this.element.querySelectorAll('.city').length, 3); // check number of elements in dom
+    assert.dom(this.element.querySelector('.city')).hasText('San Francisco'); 
 
   });
 
