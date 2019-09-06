@@ -24,6 +24,7 @@ module('Integration | Component | rental-listing', function(hooks) {
 
   hooks.beforeEach(function () {
     this.owner.register('service:map-element', StubMapsService);
+    // fake object to test
     this.rental = EmberObject.create({
       image: 'fake.png',
       title: 'test-title',
@@ -36,17 +37,21 @@ module('Integration | Component | rental-listing', function(hooks) {
 
 
   test('should display rental details', async function (assert) {
-      await render(hbs`<RentalListing @rental={{this.rental}} />`);
+    // render fake object
+    await render(hbs`<RentalListing @rental={{this.rental}} />`);
     assert.equal(this.element.querySelector('.listing h3').textContent.trim(), 'test-title', 'Title: test-title');
     assert.equal(this.element.querySelector('.listing .owner').textContent.trim(), 'Owner: test-owner', 'Owner: test-owner');
   });
 
   test('should toggle wide class on click', async function (assert) {
     await render(hbs`<RentalListing @rental={{this.rental}} />`);
+    // not wide
     assert.notOk(this.element.querySelector('.image.wide'), 'initially rendered small');
     await click('.image');
+    // wide
     assert.ok(this.element.querySelector('.image.wide'), 'rendered wide after click');
     await click('.image');
+    // not wide
     assert.notOk(this.element.querySelector('.image.wide'), 'rendered small after second click');
   });
 
