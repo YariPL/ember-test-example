@@ -26,18 +26,21 @@ module('Acceptance | list rentals', function(hooks) {
     this.owner.register('service:map-element', StubMapsService);
   });
 
+  // simulate visit home page
   test('should show rentals as the home page', async function (assert) {
     await visit('/');
     assert.equal(currentURL(), '/rentals', 'should redirect automatically');
-
   });
 
+
+  // simulate click on about button in header
   test('should link to information about the company.', async function (assert) {
     await visit('/');
     await click(".menu-about");
     assert.equal(currentURL(), '/about', 'should navigate to about');
   });
 
+  // simulate click on contact button in header
   test('should link to contact information.', async function (assert) {
     await visit('/');
     await click(".menu-contact");
@@ -56,7 +59,6 @@ module('Acceptance | list rentals', function(hooks) {
     await triggerKeyEvent('.list-filter input', 'keyup', 69);
     assert.equal(this.element.querySelectorAll('.results .listing').length, 1, 'should display 1 listing');
     assert.ok(this.element.querySelector('.listing .location').textContent.includes('Seattle'), 'should contain 1 listing with location Seattle');
-
   });
 
 /*   test('should show details for a selected rental', async function (assert) {

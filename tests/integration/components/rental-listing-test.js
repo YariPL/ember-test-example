@@ -35,7 +35,7 @@ module('Integration | Component | rental-listing', function(hooks) {
 
   hooks.beforeEach(function () {
     this.owner.register('service:map-element', StubMapsService);
-    // fake object to test
+    // fake object for test
     this.rental = EmberObject.create({
       image: 'fake.png',
       title: 'test-title',
